@@ -1,0 +1,5 @@
+.gitignore
+.docker
+.env
+run_*.sh
+README.md

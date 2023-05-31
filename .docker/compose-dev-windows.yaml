@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+
+    wings:
+        build: .
+        environment:
+            WINGS_DAEMON_PORT: 8081
+            WINGS_SFTP_PORT: 2023
+            WINGS_PANEL_URL: 'https://mindwired.ddns.net'
+            WINGS_TOKEN: 'ptla_wQlJsjWiFdLwYfinah135NLK7j1SSk0vWVVxbCiOZDq'
+            WINGS_NODE: 2
+            SSL_EMAIL: 'felipmoreira8@gmail.com'
+            SSL_FQDN: 'node1-mindwired.ddns.net'
+        volumes:
+            - 'mindwired-node1-pterodactyl-lib:/var/lib/pterodactyl'
+            - 'mindwired-node1-pterodactyl-tmp:/tmp/pterodactyl'
+            - 'mindwired-node1-pterodactyl-ssl:/le-ssl'
+            - 'mindwired-node1-docker-lib:/var/lib/docker'
+            - '//var/run/docker.sock:/var/run/docker.sock'
+        ports:
+            - '2023:2023/tcp'
+            - '8081:8081/tcp'
+            - '443:443/tcp'
+            - '80:80/tcp'
+            - '25550-25565:25550-25565'
+            - '2375-2376:2375-2376'
+volumes:
+    mindwired-node1-pterodactyl-lib: {}
+    mindwired-node1-pterodactyl-tmp: {}
+    mindwired-node1-pterodactyl-ssl: {}
+    mindwired-node1-docker-lib: {}

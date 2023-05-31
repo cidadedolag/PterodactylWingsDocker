@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Receive inputs, either single- or multi-line, and print them cleanly to the Docker logfile
+function log () {
+	if [ -n "$@" ]; then
+		readarray -t input <<< "$@"
+		printf "[$SNAME] %s\n" "${input[@]}"
+	fi
+}
+
+# Test the given container variable against variations of true/false, then return a single format usable by scripts
+isEnabled() {
+	case "${1,,}" in
+		f|false|n|no|0|off)
+			false
+			;;
+		t|true|y|yes|1|on)
+			true
+			;;
+		*)
+			log "ERROR: Input value '$1' was not expected.  Please check the accepted inputs"
+			exit 1
+	esac
+	return
+}
