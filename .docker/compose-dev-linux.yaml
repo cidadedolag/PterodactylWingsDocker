@@ -16,7 +16,7 @@ services:
             - /tmp/pterodactyl:/tmp/pterodactyl
             - /le-ssl:/le-ssl
             - /var/lib/docker:/var/lib/docker
-            #- '//var/run/docker.sock:/var/run/docker.sock'
+            - '/var/run/docker.sock:/var/run/docker.sock'
         ports:
             - '2023:2023/tcp'
             - '8081:8081/tcp'
